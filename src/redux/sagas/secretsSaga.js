@@ -14,6 +14,7 @@ function* fetchSecrets() {
     yield put({ type: 'SET_SECRETS', payload: response.data });
   } catch (error) {
     console.log('Secrets get request failed', error);
+    // DO FRONT END STUFF HERE TO SHOW 403 ERROR!
   }
 }
 
