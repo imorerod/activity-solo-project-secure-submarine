@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('req.user:', req.user);
-    if(req.isAuthenticated()){
+    if(req.user.clearance_level >= 13) {
         pool.query('SELECT * FROM "secret";')
         .then(results => res.send(results.rows))
         .catch(error => {
@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-    
 });
 
 module.exports = router;
